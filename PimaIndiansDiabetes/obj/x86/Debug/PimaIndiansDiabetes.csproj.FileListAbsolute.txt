@@ -1,0 +1,7 @@
+C:\Users\Frida\Desktop\PimaIndiansDiabetes\bin\Debug\PimaIndiansDiabetes.exe
+C:\Users\Frida\Desktop\PimaIndiansDiabetes\bin\Debug\PimaIndiansDiabetes.pdb
+C:\Users\Frida\Desktop\PimaIndiansDiabetes\bin\Debug\OpenTK.dll
+C:\Users\Frida\Desktop\PimaIndiansDiabetes\bin\Debug\OpenTK.pdb
+C:\Users\Frida\Desktop\PimaIndiansDiabetes\bin\Debug\OpenTK.xml
+C:\Users\Frida\Desktop\PimaIndiansDiabetes\obj\x86\Debug\PimaIndiansDiabetes.exe
+C:\Users\Frida\Desktop\PimaIndiansDiabetes\obj\x86\Debug\PimaIndiansDiabetes.pdb

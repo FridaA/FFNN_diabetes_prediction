@@ -8,14 +8,14 @@ namespace PimaIndiansDiabetes
     public class FeedForwardNeuralNetwork
     {
         /*
-         * Feed forward neural network with two hidden layers (version 1)
+         * Feed forward neural network with two hidden layers and one output (version 1)
          * Neurons are McCulloch-Pitts neurons
          */
         private int numberOfInputs; //Number of inputs to network
         private int numberOfOutputs; //Number of outputs from network
         private int numberOfHiddenLayers = 2; //Number of hidden neuron layers in network
         private int neuronsInLayer; //the constant number of neurons in each hidden layer
-
+        
         private double[,] ihWeights; //weights between input and first hidden layer
         private double[,] hhWeights; //weights between first and second hidden layer 
         private double[,] hoWeights; //weights between second hidden layer and output
@@ -168,6 +168,16 @@ namespace PimaIndiansDiabetes
                     //Math.Abs(desired[i] - NetworkUtils.Sign(actual[i])) / 2;
             }
             return error;
+        }//not in use
+        private double computeTotalError(double[] e) { 
+            /*
+             * Compute the total error of e
+             */
+            double error = 0;
+            for (int i = 0; i < e.Length; i++) {
+                error = error + Math.Pow(e[i], 2);
+            }
+            return error;
         }
         private void updateWeights(double[] inputs, double[] error) { 
             /*
@@ -232,7 +242,7 @@ namespace PimaIndiansDiabetes
                 }
                 this.ihThresholds[i] = this.ihThresholds[i] - STEP_LENGTH * ihGradient[i];
             }
-        }
+        } //improve implementation
         public void PrintAccuracy(List<double[]> dataset) { 
             /*
              * Print the accuracy of the network output prediction on the dataset
@@ -251,6 +261,27 @@ namespace PimaIndiansDiabetes
             }
             double rootMeanSquareError = NetworkUtils.RootMeanSquare(totalErrors.ToArray());
             Console.WriteLine(rootMeanSquareError);
+        } //not in use
+        public void PrintTotalError(List<double[]> dataset) { 
+            /*
+             * Calculate the total error on the dataset and print it to the console
+             */
+            List<double> errors = new List<double>();
+            double[] inputs;
+            double[] desiredOutputs;
+            double[] networkOutputs;
+            foreach (double[] iopair in dataset)
+            {
+                inputs = iopair.Take(this.numberOfInputs).ToArray();
+                desiredOutputs = iopair.Skip(this.numberOfInputs).Take(this.numberOfOutputs).ToArray();
+                //Feed forward:
+                networkOutputs = computeNetworkOutputs(inputs);
+                double[] e = computeErrorSignal(desiredOutputs, networkOutputs);
+                errors.Add(e[0]); //temporary solution
+            }
+            //double rootMeanSquareError = NetworkUtils.RootMeanSquare(totalErrors.ToArray());
+            Console.Write(computeTotalError(errors.ToArray()));
         }
+       
     }
 }

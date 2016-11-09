@@ -30,10 +30,10 @@ namespace PimaIndiansDiabetes
         public PimaIndians(String path) {
             LoadData(path);
         }
-        public PimaIndians(String path, double percent) {
+        public PimaIndians(String path, double fraction) {
             LoadData(path);
             NormalizeDataset();
-            DivideSet(percent);
+            DivideSet(fraction);
         }
         /*
          * METHODS
@@ -57,16 +57,16 @@ namespace PimaIndiansDiabetes
                 this.dataset.Add(data);
             }
         }
-        public void DivideSet(double percent) { 
+        public void DivideSet(double fraction) { 
             /*
              * Divide dataset into a training set and a validation set
-             * percent - the amount of data that will constitute the training set
+             * fraction - the amount of data that will constitute the training set
              */
             this.trainingset = new List<double[]>();
             this.validationset = new List<double[]>();
 
             for (int i = 0; i < this.dataset.Count; i++) {
-                if (i >= (this.dataset.Count * percent))
+                if (i >= (this.dataset.Count * fraction))
                 {
                     this.validationset.Add(this.dataset.ElementAt(i));
                 }
@@ -76,7 +76,7 @@ namespace PimaIndiansDiabetes
                 }
             }
         }
-        private List<double[]> permuteData(char fromSet) { //NOT FINISHED!
+        private List<double[]> permuteData(char fromSet)  { 
             /*
              * Permutation of data
              * fromChar - 't' if training set is to be permuted, 'v' if the 
@@ -85,7 +85,7 @@ namespace PimaIndiansDiabetes
              */
             List<double[]> data = new List<double[]>();
             return data;
-        }
+        }//Implement method!
         private List<double[]> getStochasticData(int numberOfDatapoints, char fromSet)
         {
             /*
@@ -129,7 +129,7 @@ namespace PimaIndiansDiabetes
                     iopair[i] = normalizedInputs[i];
             }
         }
-        public void PredictDiabetes() { //NOT FINISHED!
+        public void PredictDiabetes() {
             /*
              * Create and train a neural network to predict if an individual has diabetes 
              * among the pima indians.
@@ -139,9 +139,13 @@ namespace PimaIndiansDiabetes
             FeedForwardNeuralNetwork network = new FeedForwardNeuralNetwork(NUMBER_OF_INPUTS, NUMBER_OF_OUTPUTS, NEURONS_IN_LAYER);
             for (int i = 0; i < 8000; i++)
             {
+                //Train network on trainingset
                 network.Train(getStochasticData(this.trainingset.Count, 't'));
-                network.PrintAccuracy(getStochasticData(this.trainingset.Count, 't'));
+                //Print error of trainingset
+                Console.WriteLine("Total error (trainingset): ");
+                network.PrintTotalError(getStochasticData(this.trainingset.Count, 't'));
+                //Measure error of validationset
             }
-        }
+        } //improve method! for example: visualize the learning, quit training before overfitting etc.
     }
 }

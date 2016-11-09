@@ -5,3 +5,11 @@ C:\Users\Frida\Desktop\PimaIndiansDiabetes\bin\Debug\OpenTK.pdb
 C:\Users\Frida\Desktop\PimaIndiansDiabetes\bin\Debug\OpenTK.xml
 C:\Users\Frida\Desktop\PimaIndiansDiabetes\obj\x86\Debug\PimaIndiansDiabetes.exe
 C:\Users\Frida\Desktop\PimaIndiansDiabetes\obj\x86\Debug\PimaIndiansDiabetes.pdb
+C:\Users\Frida\Documents\GitHub\FFNN_diabetes_prediction\PimaIndiansDiabetes\obj\x86\Debug\PimaIndiansDiabetes.exe
+C:\Users\Frida\Documents\GitHub\FFNN_diabetes_prediction\PimaIndiansDiabetes\obj\x86\Debug\PimaIndiansDiabetes.pdb
+C:\Users\Frida\Documents\GitHub\FFNN_diabetes_prediction\PimaIndiansDiabetes\bin\Debug\PimaIndiansDiabetes.exe
+C:\Users\Frida\Documents\GitHub\FFNN_diabetes_prediction\PimaIndiansDiabetes\bin\Debug\PimaIndiansDiabetes.pdb
+C:\Users\Frida\Documents\GitHub\FFNN_diabetes_prediction\PimaIndiansDiabetes\bin\Debug\OpenTK.dll
+C:\Users\Frida\Documents\GitHub\FFNN_diabetes_prediction\PimaIndiansDiabetes\bin\Debug\OpenTK.pdb
+C:\Users\Frida\Documents\GitHub\FFNN_diabetes_prediction\PimaIndiansDiabetes\bin\Debug\OpenTK.xml
+C:\Users\Frida\Documents\GitHub\FFNN_diabetes_prediction\PimaIndiansDiabetes\obj\x86\Debug\PimaIndiansDiabetes.csprojResolveAssemblyReference.cache

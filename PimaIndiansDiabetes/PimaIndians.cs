@@ -11,7 +11,9 @@ namespace PimaIndiansDiabetes
     public class PimaIndians
     {
         /*
-         * 
+         * The purpose of the class is to predict diabetes among the pima indians. The class
+         * can import data from file and manipulate the data, as well as creating a predictor 
+         * and train it on the data
          */
         private List<double[]> dataset;
         private List<double[]> trainingset;

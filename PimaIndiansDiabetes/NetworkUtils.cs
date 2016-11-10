@@ -137,5 +137,23 @@ namespace PimaIndiansDiabetes
             else
                 return -1;            
         }
+        public static void Permute(ref int[] arr) { 
+            int listLength = arr.Length -1;
+            //permute(arr, 0, listLength);
+            for (int i = listLength; i > 0; i--) {
+                int j = random.Next(i);
+                swap(ref arr[j], ref arr[i]);
+            }
+        }
+        private static void swap(ref int a, ref int b) {
+            if (a.Equals(b))
+                return;
+            int tmp = a;
+            a = b;
+            b = tmp;
+        }
+        private static void permute(int[] arr, int recursionDepth, int maxDepth) {
+            //for (int i = 0; i < )
+        }
     }
 }

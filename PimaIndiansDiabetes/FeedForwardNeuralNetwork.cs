@@ -237,7 +237,7 @@ namespace PimaIndiansDiabetes
                 for (int j = 0; j < this.numberOfInputs; j++)
                 { //For each network input
                     //Update weights with gradient descent to approach the desired output
-                    this.ihWeights[j, i] = this.ihWeights[j, i] + STEP_LENGTH * ihGradient[i] * inputs[i];
+                    this.ihWeights[j, i] = this.ihWeights[j, i] + STEP_LENGTH * ihGradient[i] * inputs[j];
                     //this.ihThresholds[j] = this.ihThresholds[j] + STEP_LENGTH * ihGradient[i];
                 }
                 this.ihThresholds[i] = this.ihThresholds[i] - STEP_LENGTH * ihGradient[i];
@@ -280,7 +280,7 @@ namespace PimaIndiansDiabetes
                 errors.Add(e[0]); //temporary solution
             }
             //double rootMeanSquareError = NetworkUtils.RootMeanSquare(totalErrors.ToArray());
-            Console.Write(computeTotalError(errors.ToArray()));
+            Console.WriteLine(computeTotalError(errors.ToArray()));
         }
        
     }

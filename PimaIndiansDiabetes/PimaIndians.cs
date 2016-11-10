@@ -23,7 +23,7 @@ namespace PimaIndiansDiabetes
 
         private static int NUMBER_OF_INPUTS = 8;
         private static int NUMBER_OF_OUTPUTS = 1;
-        private static int NEURONS_IN_LAYER = 5;
+        private static int NEURONS_IN_LAYER = 8;
 
         /*
          * CONSTRUCTORS
@@ -86,8 +86,39 @@ namespace PimaIndiansDiabetes
              * Return a list of the permuted dataset
              */
             List<double[]> data = new List<double[]>();
+            switch (fromSet) { 
+                case 't':
+                    //Create an array with all indices:
+                    int[] idxT = createIndexarray(this.trainingset.Count);
+                    NetworkUtils.Permute(ref idxT);
+                    data = perm(this.trainingset, idxT);
+                    break;
+                case 'v':
+                    //Create an array with all indices:
+                    int[] idxV = createIndexarray(this.validationset.Count);
+                    NetworkUtils.Permute(ref idxV);
+                    data = perm(this.validationset, idxV);
+                    break;
+            }
             return data;
-        }//Implement method!
+        }
+
+        private int[] createIndexarray(int length) { 
+            int[] idx = new int[length];
+            for (int i = 0; i < length; i++) {
+                idx[i] = i;
+            }
+            return idx;
+        }
+        private List<double[]> perm(List<double[]> list, int[] idx) {
+            List<double[]> permList = new List<double[]>();
+            double nDatapoints = NUMBER_OF_OUTPUTS + NUMBER_OF_INPUTS;
+            for (int i = 0; i < idx.Length; i++){
+                double[] x = list.ElementAt(idx[i]);
+                permList.Add(x);
+            }
+            return permList;
+        }
         private List<double[]> getStochasticData(int numberOfDatapoints, char fromSet)
         {
             /*
@@ -139,13 +170,13 @@ namespace PimaIndiansDiabetes
              * validation set to demonstrate how the network improve
              */
             FeedForwardNeuralNetwork network = new FeedForwardNeuralNetwork(NUMBER_OF_INPUTS, NUMBER_OF_OUTPUTS, NEURONS_IN_LAYER);
-            for (int i = 0; i < 8000; i++)
+            for (int i = 0; i < 80000; i++)
             {
-                //Train network on trainingset
-                network.Train(getStochasticData(this.trainingset.Count, 't'));
+                //Train network on trainingset 
+                network.Train(permuteData('t'));
+                
                 //Print error of trainingset
-                Console.WriteLine("Total error (trainingset): ");
-                network.PrintTotalError(getStochasticData(this.trainingset.Count, 't'));
+                network.PrintAccuracy(permuteData('t')); //Root-mean-square-error
                 //Measure error of validationset
             }
         } //improve method! for example: visualize the learning, quit training before overfitting etc.
